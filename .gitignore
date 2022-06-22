@@ -168,7 +168,6 @@ cython_debug/
 #.idea/
 *.th
 *.ipynb
-*.gif
 *.png
 *.job
 *.err
