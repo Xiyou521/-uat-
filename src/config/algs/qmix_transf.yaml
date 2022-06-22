@@ -1,0 +1,61 @@
+# --- QMIX specific parameters with large networks ---
+# for 3s5z_vs_3s6z
+
+# use epsilon greedy action selector
+action_selector: "epsilon_greedy"
+epsilon_start: 1.0
+epsilon_finish: 0.05
+epsilon_anneal_time: 100000 
+
+runner: "parallel"
+batch_size_run: 8 
+buffer_size: 3000 
+batch_size: 32
+optimizer: 'adam'
+
+t_max: 10050000
+
+# update the target network every {} episodes
+target_update_interval: 200
+
+# parameters of the transformer agent
+mac: "n_mac"
+agent: "n_transf"
+agent_output_type: q
+feat_dim: 6 # 6 features for each entity: (pos_x, pos_y, depth, distance, type, self)
+emb: 32 # embedding dimension of transformer
+heads: 4 # head number of transformer
+depth: 2 # block number of transformer
+
+# parameters of the transformer mixer
+mixer: "qmix_transformer"
+mixer_emb: 32 # embedding dimension of transformer
+mixer_heads: 4 # head number of transformer
+mixer_depth: 2 # block number of transformer
+
+# paramters for the learner 
+learner: "nq_learner"
+td_lambda: 0.6
+optimizer: 'adam'
+weight_decay: 0
+lr: 0.003 # Learning rate for agents
+
+# rnn layer normalization
+use_layer_norm: False
+
+# orthogonal init for DNN
+use_orthogonal: False
+gain: 0.01
+
+# to keep the token dimension fixed, observaion id and last action should not be included
+obs_agent_id: False # Include the agent's one_hot id in the observation
+obs_last_action: False # Include the agent's last action (one_hot) in the observation
+
+
+# Priority experience replay
+use_per: False
+per_alpha: 0.6
+per_beta: 0.4
+return_priority: False
+
+name: "qmix_transf"

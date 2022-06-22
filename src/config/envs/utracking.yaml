@@ -1,0 +1,52 @@
+env: "utracking"
+
+env_args:
+  key: utracking # just for saving
+  map_name: "7v7"
+  time_limit: 200 # how many timesteps to run
+  pretrained_wrapper: null # not sure about this
+  scenario_name: tracking
+  num_agents: 7
+  num_landmarks: 7
+  landmark_depth: 15.
+  landmark_movable: True
+  agent_vel: 0.3
+  landmark_vel: 0.05
+  max_vel: 0.2
+  random_vel: False
+  sense_range: 0.5 #how far the agent can see the position and slants of other agents
+  max_range: 1. # how far the agent can make a measurement in respect to the landmark
+  movement: linear #linear, levy, turning
+  pf_method: False
+  rew_err_th: 0.05
+  rew_dis_th: 0.3
+  benchmark: True
+  only_closer_agent_pos: False
+  use_custom_state: True
+  min_init_dist: 0.2 # minimum distance between agents and between agents and landmarks at episode start
+  max_init_dist: 0.5 # maximum distance of the closest agent at the beginning of episode 
+  difficulty: easy
+  obs_entity_mode: True # for transformers
+  
+
+use_cuda: True
+use_rnn: True
+
+standardise_returns: False
+standardise_rewards: False
+
+checkpoint_path: "results_curr/models/qmix_transf_seed824795663_6v6_2022-06-17 01:01:04.208401"
+
+#logs 
+save_animation: True 
+use_tensorboard: True
+local_results_path: "results_curr"
+test_greedy: True
+test_nepisode: 10
+test_interval: 40000
+log_interval: 40000
+animation_interval: 500000
+animation_interval_evaluation: 100 # only for evaluate mode
+runner_log_interval: 20000
+learner_log_interval: 20000
+t_max: 100050000
